@@ -84,9 +84,9 @@ describe('Suíte de Testes: Conta Bancária (100% Coverage)', () => {
     test('Deve cobrir falha crítica no saque durante transferência', () => {
       const destino = new ContaBancaria({ saldo: 0 });
       const originalSacar = conta.sacar;
-      conta.sacar = () => false; // Força falha manual
+      conta.sacar = () => false; 
       expect(conta.transferir(100, destino)).toBe(false);
-      conta.sacar = originalSacar; // Restaura
+      conta.sacar = originalSacar; 
     });
 
     test('Deve aplicar tarifas e resetar conta', () => {
@@ -101,7 +101,6 @@ describe('Suíte de Testes: Conta Bancária (100% Coverage)', () => {
     test('Deve validar todos os campos da conta (validarConta)', () => {
       expect(conta.validarConta()).toBe(true);
       
-      // Testando cada 'return false' do método validarConta
       const originalID = conta.conta.id;
       conta.conta.id = null;
       expect(conta.validarConta()).toBe(false);
